@@ -17,4 +17,9 @@ const InGameControls = (props) => {
   )
 };
 
-export default connect(state => {}, { stopGame })(InGameControls);
+const stateToProps = state => {
+  return {
+  };
+};
+
+export default connect(stateToProps, { stopGame })(InGameControls);

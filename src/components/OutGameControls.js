@@ -24,4 +24,9 @@ const OutGameControls = (props) => {
   )
 };
 
-export default connect(state => {}, { startGame })(OutGameControls);
+const stateToProps = state => {
+    return {
+    };
+};
+
+export default connect(stateToProps, { startGame })(OutGameControls);
