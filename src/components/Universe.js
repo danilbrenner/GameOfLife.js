@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Universe extends Component {
+import { toggleCell } from '../actions/universe';
+
+let toSingleValue = ({ x, y }) => {
+  return (y*132) + x;
+};
+
+class Universe extends Component {
   constructor(props){
     super(props);
     this.isMoseDown = false;
-    this.currentCell = { x: 0, y: 0 };
+    this.currentCell = { x: -1, y: -1 };
   }
-
   componentDidMount(){
     const ctx = this.refs.canvas.getContext('2d');
     this.ctx = ctx;
-    // for (let x = 0; x < 134; x++) {  
-    //   for(let y = 0; y < 83; y++){
-    //     this.ctx.fillRect(x*6, y*6, 5, 5);
-    //   }
-    // }
   }
   componentDidUpdate(){
-
+    this.ctx.clearRect(0, 0, 803, 497);
+    this.props.cells.forEach((v, ix) => 
+    { 
+      if(v === true) 
+      {
+        let y = Math.floor(ix/132);
+        let x = ix - (y*132);
+        this.ctx.fillRect(x*6, y*6, 5, 5);
+      } 
+    });
   }
 
   getCellCoordinatesByPosition(x, y){
@@ -26,15 +36,16 @@ export default class Universe extends Component {
       y: Math.floor(y/6)
     };
   }
+  
   cellPositionHasChanged(a, b){
     return ! (a.x === b.x && a.y === b.y); 
   }
-
   handleMoseEvent(e){
-    // let overCell = this.getCellCoordinatesByPosition(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-    // if(!this.cellPositionHasChanged(this.currentCell, overCell)) return;
-    // this.currentCell = overCell;
-    //this.ctx.fillRect(this.currentCell.x*6, this.currentCell.y*6, 5, 5);
+    if(this.props.isGameStarted) return;
+    let overCell = this.getCellCoordinatesByPosition(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    if(!this.cellPositionHasChanged(this.currentCell, overCell)) return;
+    this.props.toggleCell(toSingleValue(overCell));
+    this.currentCell = overCell;
   }
 
   mouseDown(e) {
@@ -44,6 +55,7 @@ export default class Universe extends Component {
   
   mouseUp(e) {
     this.isMoseDown = false;
+    this.currentCell = { x: -1, y: -1 };
   }
   
   moseMove(e) {
@@ -63,8 +75,16 @@ export default class Universe extends Component {
           onMouseUp= { this.mouseUp.bind(this) }
           onMouseLeave={ this.mouseUp.bind(this) }
         ></canvas>
-
       </div>
     );
   }
 }
+
+const stateToProps = state => {
+  return {
+    isGameStarted: state.isGameStarted,
+    cells: state.cells
+  };
+};
+
+export default connect(stateToProps, { toggleCell })(Universe);

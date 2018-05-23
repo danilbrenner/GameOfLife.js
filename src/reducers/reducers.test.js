@@ -1,5 +1,5 @@
 import rootReducer from './index';
-import { STOP_GAME, START_GAME } from '../actions/types';
+import { STOP_GAME, START_GAME, TOGGLE_CELL } from '../actions/types';
 
 describe('reducers', () => {
   it('should start game', () => {
@@ -13,5 +13,13 @@ describe('reducers', () => {
   it('should do nothing when unknown action is performed', () => {
     let state = rootReducer({isGameStarted:true}, {type: 'UNKNOWN_ACTION'});
     expect(state).toEqual({isGameStarted:true});
+  });
+  it('should toggle cells value false -> true', () => {
+    let state = rootReducer({isGameStarted:true, cells: [ false, false, false, false ]}, {type: TOGGLE_CELL, payload: 2});
+    expect(state).toEqual({isGameStarted:true, cells: [ false, false, true, false ]});
+  });
+  it('should toggle cells value true -> false', () => {
+    let state = rootReducer({isGameStarted:true, cells: [ false, true, false, false ]}, {type: TOGGLE_CELL, payload: 1});
+    expect(state).toEqual({isGameStarted:true, cells: [ false, false, false, false ]});
   });
 });

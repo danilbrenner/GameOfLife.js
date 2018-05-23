@@ -12,7 +12,8 @@ import Game from './Game';
 
 import counterMw from '../middleware/counter';
 const initialState = { 
-  isGameStarted: false 
+  isGameStarted: false,
+  cells: (new Array(10906)).fill(false) 
 };
 
 const store = createStore(
