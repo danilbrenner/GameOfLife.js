@@ -1,4 +1,3 @@
-
 export const START_GAME = 'START_GAME';
 export const STOP_GAME = 'STOP_GAME';
 export const MAKE_STEP = 'MAKE_STEP';

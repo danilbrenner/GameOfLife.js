@@ -7,13 +7,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
-import rootReducer from '../reducers'
+import rootReducer from '../reducers';
 import Game from './Game';
 
-import counterMw from '../middleware/counter'
-const initialState = {
-  isGameStarted: false
+import counterMw from '../middleware/counter';
+const initialState = { 
+  isGameStarted: false 
 };
 
 const store = createStore(
@@ -40,6 +39,6 @@ const App = () => {
       </div>
     </Provider>
   );
-}
+};
 
 export default App;

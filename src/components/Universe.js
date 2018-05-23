@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class Universe extends Component {
   constructor(props){
@@ -62,9 +62,9 @@ export default class Universe extends Component {
           onMouseDown= { this.mouseDown.bind(this) }
           onMouseUp= { this.mouseUp.bind(this) }
           onMouseLeave={ this.mouseUp.bind(this) }
-          ></canvas>
+        ></canvas>
 
       </div>
-    )
+    );
   }
 }

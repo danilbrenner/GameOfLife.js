@@ -1,7 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
-import Universe from './Universe'
+import Universe from './Universe';
 
 import InGameControls from './InGameControls';
 import OutGameControls from './OutGameControls';
@@ -13,8 +13,8 @@ const Game = (props) => {
         <Universe />
         { props.isGameStarted ? <InGameControls /> : <OutGameControls /> }
       </div>
-  </div>
-  )
+    </div>
+  );
 };
 
 const stateToProps = state => {
