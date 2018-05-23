@@ -1,23 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import StopIcon from '@material-ui/icons/Stop';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { startGame } from '../actions/game'
+import { startGame, makeStep, clearUniverse } from '../actions/game'
 
 const OutGameControls = (props) => {
   return (
     <ul className="game-controlls">
       <li>
-        <Button variant="fab" color="secondary">
+        <Button id="clear-button" variant="fab" color="secondary" onClick={ props.clearUniverse }>
             <DeleteIcon />
         </Button>
-      </li>  
+      </li>
       <li>
-        <Button variant="fab" color="primary" onClick={ props.startGame }>
+        <Button id="play-button" variant="fab" color="primary" onClick={ props.startGame }>
           <PlayArrowIcon />
+        </Button>
+      </li>
+      <li>
+        <Button id="step-button" variant="fab" color="default" onClick={ props.makeStep }>
+          <SkipNextIcon />
         </Button>
       </li>
     </ul>
@@ -29,4 +36,4 @@ const stateToProps = state => {
     };
 };
 
-export default connect(stateToProps, { startGame })(OutGameControls);
+export default connect(stateToProps, { startGame, makeStep, clearUniverse })(OutGameControls);

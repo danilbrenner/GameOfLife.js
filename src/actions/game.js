@@ -1,4 +1,4 @@
-import { START_GAME, STOP_GAME } from "./types";
+import { START_GAME, STOP_GAME, MAKE_STEP, CLEAR_UNIVERSE } from "./types";
 
 export const startGame = () => {
     return {
@@ -9,5 +9,17 @@ export const startGame = () => {
 export const stopGame = () => {
     return {
         type: STOP_GAME
+    };
+};
+
+export const makeStep = () => {
+    return {
+        type: MAKE_STEP
+    };
+};
+
+export const clearUniverse = () => {
+    return {
+        type: CLEAR_UNIVERSE
     };
 };

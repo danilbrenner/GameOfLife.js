@@ -11,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import rootReducer from '../reducers'
 import Game from './Game';
 
+import counterMw from '../middleware/counter'
 const initialState = {
   isGameStarted: false
 };
@@ -19,11 +20,10 @@ const store = createStore(
   rootReducer,
   initialState,
   compose(
-    //applyMiddleware(...middleware),
+    applyMiddleware(counterMw),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
-
 
 const App = () => {
   return (
