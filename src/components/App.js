@@ -13,6 +13,7 @@ import Game from './Game';
 import counterMw from '../middleware/counter';
 const initialState = { 
     isGameStarted: false,
+    generation: 0,
     cells: (new Array(10906)).fill(false) 
 };
 

@@ -12,7 +12,7 @@ describe('components', () => {
     describe('Game', () => {
         it('should contain InGameControls when game is started', () => {
             const mockStore = configureStore();
-            const store = mockStore({ isGameStarted: true });
+            const store = mockStore({ isGameStarted: true, cells: [], generation: 0 });
             const wrapper = mount(<Provider store={store}><Game /></Provider>);
                         
             expect(wrapper.find('InGameControls').length).toBe(1);
@@ -21,7 +21,7 @@ describe('components', () => {
 
         it('should contain OutGameControls when game is not started', () => {
             const mockStore = configureStore();
-            const store = mockStore({ isGameStarted: false });
+            const store = mockStore({ isGameStarted: false, cells: [], generation: 0 });
             const wrapper = mount(<Provider store={store}><Game /></Provider>);
                         
             expect(wrapper.find('InGameControls').length).toBe(0);

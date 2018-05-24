@@ -23,9 +23,9 @@ describe('reducers', () => {
         expect(state).toEqual({isGameStarted:true, cells: [ false, false, false, false ]});
     });
     it('should make step', () => {
-        const initState = {isGameStarted:true, cells: [ false, true, false, false ]};
+        const initState = {isGameStarted:true, generation: 1, cells: [ false, true, false, false ]};
         let state = rootReducer(initState, {type: MAKE_STEP });
-        expect(state).toEqual({isGameStarted:true, cells: [ false, false, false, false ]});
+        expect(state).toEqual({isGameStarted:true, generation: 2, cells: [ false, false, false, false ]});
     });
     it('should clear universe', () => {
         const initState = {isGameStarted:true, cells: [ true, true, true, true ]};

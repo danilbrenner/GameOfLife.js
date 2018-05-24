@@ -10,7 +10,7 @@ export default function(state = {}, action) {
     case TOGGLE_CELL:
         return { ...state, cells: state.cells.map((v, ix) => action.payload === ix ? !v : v ) };
     case MAKE_STEP:
-        return { ...state, cells: processCell({ width: 132, cells: state.cells }).cells };
+        return { ...state, generation: state.generation + 1, cells: processCell({ width: 132, cells: state.cells }).cells };
     case CLEAR_UNIVERSE:
         return { ...state, cells: state.cells.map(v => false ) };
     default:
