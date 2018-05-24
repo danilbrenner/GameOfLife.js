@@ -10,13 +10,13 @@ import { STOP_GAME } from '../actions/types';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('components', () => {
-  describe('InGameControls', () => {
-    it('stop game button should call stopGame action creator', () => {
-      const mockStore = configureStore();
-      const store = mockStore({});
-      const wrapper = mount(<Provider store={store}><InGameControls /></Provider>);
-      const button = wrapper.find('Button');
-      expect(button.props().onClick()).toEqual({ type: STOP_GAME });
+    describe('InGameControls', () => {
+        it('stop game button should call stopGame action creator', () => {
+            const mockStore = configureStore();
+            const store = mockStore({});
+            const wrapper = mount(<Provider store={store}><InGameControls /></Provider>);
+            const button = wrapper.find('Button');
+            expect(button.props().onClick()).toEqual({ type: STOP_GAME });
+        });
     });
-  });
 });

@@ -12,34 +12,34 @@ import Game from './Game';
 
 import counterMw from '../middleware/counter';
 const initialState = { 
-  isGameStarted: false,
-  cells: (new Array(10906)).fill(false) 
+    isGameStarted: false,
+    cells: (new Array(10906)).fill(false) 
 };
 
 const store = createStore(
-  rootReducer,
-  initialState,
-  compose(
-    applyMiddleware(counterMw),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+    rootReducer,
+    initialState,
+    compose(
+        applyMiddleware(counterMw),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
 );
 
 const App = () => {
-  return (
-    <Provider store={store}>
-      <div className="App">
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="title" color="inherit">
+    return (
+        <Provider store={store}>
+            <div className="App">
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="title" color="inherit">
               Game of life
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Game />  
-      </div>
-    </Provider>
-  );
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <Game />  
+            </div>
+        </Provider>
+    );
 };
 
 export default App;

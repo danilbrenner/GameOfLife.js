@@ -6,20 +6,20 @@ import StopIcon from '@material-ui/icons/Stop';
 import { stopGame } from '../actions/game';
 
 const InGameControls = (props) => {
-  return (
-    <ul className="game-controlls">
-      <li>
-        <Button variant="fab" color="primary" onClick={ props.stopGame }>
-          <StopIcon />
-        </Button>
-      </li>
-    </ul>
-  );
+    return (
+        <ul className="game-controlls">
+            <li>
+                <Button variant="fab" color="primary" onClick={ props.stopGame }>
+                    <StopIcon />
+                </Button>
+            </li>
+        </ul>
+    );
 };
 
 const stateToProps = state => {
-  return {
-  };
+    return {
+    };
 };
 
 export default connect(stateToProps, { stopGame })(InGameControls);
